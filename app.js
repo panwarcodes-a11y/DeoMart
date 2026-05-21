@@ -2,10 +2,10 @@ let cart = [];
 
 function addToCart(name,price){
 cart.push({name,price});
-update();
+updateCart();
 }
 
-function update(){
+function updateCart(){
 
 let box = document.getElementById("cart-items");
 let count = document.getElementById("cart-count");
@@ -15,18 +15,19 @@ box.innerHTML = "";
 
 let total = 0;
 
-cart.forEach(i=>{
-total += i.price;
-box.innerHTML += `<p>${i.name} - ₹${i.price}</p>`;
+cart.forEach(item=>{
+total += item.price;
+box.innerHTML += `<p>${item.name} - ₹${item.price}</p>`;
 });
 
 count.innerText = cart.length;
-totalBox.innerText = "Total: ₹"+total;
+totalBox.innerText = total;
 }
 
 function placeOrder(){
-if(cart.length==0){
-alert("Cart empty");
+
+if(cart.length === 0){
+alert("Cart Empty");
 return;
 }
 
@@ -34,8 +35,8 @@ let total = cart.reduce((a,b)=>a+b.price,0);
 
 window.saveOrder(cart,total);
 
-alert("Order placed");
+alert("Order Placed Successfully 🚀");
 
 cart=[];
-update();
+updateCart();
 }
