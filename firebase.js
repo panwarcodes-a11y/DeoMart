@@ -6,15 +6,15 @@ GoogleAuthProvider,
 signInWithPopup,
 signOut,
 onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
 getFirestore,
 doc,
-setDoc
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+setDoc,
+collection,
+addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
 apiKey: "YOUR_API_KEY",
@@ -37,26 +37,26 @@ const user = result.user;
 
 await setDoc(doc(db,"users",user.uid),{
 name:user.displayName,
-email:user.email,
-photo:user.photoURL
+email:user.email
 });
 
 alert("Welcome " + user.displayName);
 }
 
-// LOGOUT
-window.logout = ()=>signOut(auth);
+// SAVE ORDER
+window.saveOrder = async (order)=>{
+await addDoc(collection(db,"orders"),order);
+}
 
-// UI
+// USER CHECK
 onAuthStateChanged(auth,(user)=>{
 
 let box = document.getElementById("user-box");
 
 if(user){
 box.innerHTML = `
-<img src="${user.photoURL}" width="50">
-<p>${user.displayName}</p>
-<button onclick="logout()">Logout</button>
+<p>Welcome ${user.displayName}</p>
+<button onclick="signOut(auth)">Logout</button>
 `;
 }else{
 box.innerHTML = `
