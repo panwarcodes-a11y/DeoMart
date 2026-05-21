@@ -8,25 +8,31 @@ updateCart();
 function updateCart(){
 
 let box = document.getElementById("cart-items");
-let count = document.getElementById("cart-count");
 let totalBox = document.getElementById("cart-total");
 
 box.innerHTML = "";
 
 let total = 0;
 
-cart.forEach(item=>{
-total += item.price;
-box.innerHTML += `<p>${item.name} - ₹${item.price}</p>`;
+cart.forEach(i=>{
+total += i.price;
+box.innerHTML += `<p>${i.name} - ₹${i.price}</p>`;
 });
 
-count.innerText = cart.length;
 totalBox.innerText = total;
+}
+
+function openCart(){
+document.getElementById("cart").style.right="0";
+}
+
+function closeCart(){
+document.getElementById("cart").style.right="-100%";
 }
 
 function placeOrder(){
 
-if(cart.length === 0){
+if(cart.length==0){
 alert("Cart Empty");
 return;
 }
@@ -35,8 +41,9 @@ let total = cart.reduce((a,b)=>a+b.price,0);
 
 window.saveOrder(cart,total);
 
-alert("Order Placed Successfully 🚀");
+alert("Order Placed 🚀");
 
 cart=[];
 updateCart();
+closeCart();
 }
