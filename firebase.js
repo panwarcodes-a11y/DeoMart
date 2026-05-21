@@ -29,28 +29,64 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-// LOGIN
-window.login = async ()=>{
-const res = await signInWithPopup(auth,provider);
-const user = res.user;
+let currentUser = null;
 
-await setDoc(doc(db,"users",user.uid),{
-name:user.displayName,
-email:user.email
+---
+
+# 🔐 LOGIN FIX (REAL WORKING)
+
+window.login = async () => {
+try{
+const res = await signInWithPopup(auth, provider);
+currentUser = res.user;
+
+await setDoc(doc(db,"users",currentUser.uid),{
+name: currentUser.displayName,
+email: currentUser.email,
+photo: currentUser.photoURL
 });
 
 document.getElementById("user-box").innerHTML =
-"Hello " + user.displayName;
+"👤 " + currentUser.displayName;
+
+alert("Login Success 🚀");
+}
+catch(e){
+alert(e.message);
+}
 };
 
-// SAVE ORDER
+---
+
+# 💾 SAVE ORDER (FIXED)
+
 window.saveOrder = async (cart,total)=>{
 
+try{
+
 await addDoc(collection(db,"orders"),{
-items:cart,
-total:total,
-status:"Pending",
-time:Date.now()
+user: currentUser ? currentUser.email : "guest",
+items: cart,
+total: total,
+status: "Pending",
+time: Date.now()
 });
 
+}catch(e){
+alert("Order error: " + e.message);
+}
+
 };
+
+---
+
+# 👤 AUTO USER CHECK
+
+onAuthStateChanged(auth,(user)=>{
+currentUser = user;
+
+if(user){
+document.getElementById("user-box").innerHTML =
+"👤 " + user.displayName;
+}
+});
