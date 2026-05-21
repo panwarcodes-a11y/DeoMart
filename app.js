@@ -1,84 +1,39 @@
-console.log("DeoMart Premium Loaded");
-
 let cart = [];
 
 function addToCart(name,price){
-
 cart.push({name,price});
-
 updateCart();
-
 openCart();
-
 }
 
 function updateCart(){
 
-const cartItems =
-document.getElementById("cart-items");
+let items = document.getElementById("cart-items");
+let count = document.getElementById("cart-count");
+let totalBox = document.getElementById("cart-total");
 
-const cartCount =
-document.getElementById("cart-count");
-
-const cartTotal =
-document.getElementById("cart-total");
-
-cartItems.innerHTML = "";
+items.innerHTML = "";
 
 let total = 0;
 
-cart.forEach((item,index)=>{
-
+cart.forEach(item=>{
 total += item.price;
 
-cartItems.innerHTML += `
-
-<div class="cart-item">
-
-<h4>${item.name}</h4>
-
-<p>₹${item.price}</p>
-
+items.innerHTML += `
+<div>
+<p>${item.name} - ₹${item.price}</p>
 </div>
-
 `;
-
 });
 
-cartCount.innerText = cart.length;
-
-cartTotal.innerText =
-"Total: ₹" + total;
-
+count.innerText = cart.length;
+totalBox.innerText = "Total: ₹" + total;
 }
 
 function openCart(){
-
-document.getElementById("cartDrawer")
-.style.right = "0";
-
+document.getElementById("cart").style.right="0";
 }
 
 function closeCart(){
-
-document.getElementById("cartDrawer")
-.style.right = "-100%";
-
+document.getElementById("cart").style.right="-100%";
 }
-
-document
-.querySelector(".fa-shopping-cart")
-.addEventListener("click",openCart);
-
-const cards =
-document.querySelectorAll(".card");
-
-cards.forEach(card=>{
-
-card.addEventListener("click",()=>{
-
-alert(card.innerText + " Coming Soon!");
-
-});
-
-});
