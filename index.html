@@ -1,146 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeoMart</title>
-
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+<h2>DeoMart</h2>
 
-<div class="logo">DeoMart</div>
-
-<div class="nav-icons">
-
-<i class="fas fa-bell"></i>
-
-<i class="fas fa-shopping-cart" onclick="openCart()"></i>
-
-<span id="cart-count">0</span>
-
-</div>
-
-</div>
-
-<!-- USER LOGIN AREA -->
 <div id="user-box"></div>
 
-<button class="login-btn" onclick="login()">
-Login With Google
-</button>
+<button onclick="login()">Login</button>
 
-<!-- HERO -->
-<div class="hero">
+<hr>
 
-<h1>DeoMart Store</h1>
+<h3>Products</h3>
 
-<p>Fast Grocery | Food | Medicines | Delivery</p>
+<button onclick="addToCart('Burger',120)">Burger ₹120</button>
+<button onclick="addToCart('Veg',50)">Veg ₹50</button>
 
-<button onclick="openCart()">
-Start Shopping
-</button>
+<hr>
 
-</div>
-
-<!-- SEARCH BAR -->
-<div class="search-container">
-
-<i class="fas fa-search"></i>
-
-<input type="text" placeholder="Search products...">
-
-</div>
-
-<!-- CATEGORIES -->
-<h2 class="title">Categories</h2>
-
-<div class="categories">
-
-<div class="card">
-<i class="fas fa-shopping-basket"></i>
-<p>Grocery</p>
-</div>
-
-<div class="card">
-<i class="fas fa-pizza-slice"></i>
-<p>Food</p>
-</div>
-
-<div class="card">
-<i class="fas fa-pills"></i>
-<p>Medicine</p>
-</div>
-
-<div class="card">
-<i class="fas fa-truck"></i>
-<p>Delivery</p>
-</div>
-
-</div>
-
-<!-- PRODUCTS -->
-<h2 class="title">Popular Products</h2>
-
-<div class="products">
-
-<div class="product">
-<img src="https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg">
-<h3>Vegetables</h3>
-<p>₹40</p>
-<button onclick="addToCart('Vegetables',40)">Add</button>
-</div>
-
-<div class="product">
-<img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg">
-<h3>Burger Combo</h3>
-<p>₹120</p>
-<button onclick="addToCart('Burger',120)">Add</button>
-</div>
-
-<div class="product">
-<img src="https://images.pexels.com/photos/208512/pexels-photo-208512.jpeg">
-<h3>Medicines</h3>
-<p>₹80</p>
-<button onclick="addToCart('Medicines',80)">Add</button>
-</div>
-
-</div>
-
-<!-- CART -->
-<div id="cart">
-
-<div class="cart-box">
-
-<h2>Your Cart</h2>
+<h3>Cart (<span id="cart-count">0</span>)</h3>
 
 <div id="cart-items"></div>
 
-<h3 id="cart-total">Total: ₹0</h3>
+<h3 id="cart-total">Total: 0</h3>
 
-<button onclick="placeOrder()">
-Checkout Now
-</button>
+<button onclick="placeOrder()">Place Order</button>
 
-<button onclick="closeCart()">
-Close
-</button>
-
-</div>
-
-</div>
-
-<!-- SCRIPTS -->
 <script src="app.js"></script>
 <script type="module" src="firebase.js"></script>
 
 </body>
-
 </html>
