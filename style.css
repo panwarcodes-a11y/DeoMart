@@ -3,8 +3,10 @@ margin:0;
 font-family:Arial,sans-serif;
 background:#111;
 color:white;
-padding-bottom:80px;
+padding-bottom:90px;
 }
+
+/* NAVBAR */
 
 .navbar{
 display:flex;
@@ -23,14 +25,35 @@ font-weight:bold;
 color:#f7c600;
 }
 
+.nav-icons{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
 .nav-icons i{
-margin-left:15px;
 font-size:20px;
 cursor:pointer;
 }
 
+.cart-icon{
+position:relative;
+}
+
+#cart-count{
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+padding:2px 7px;
+border-radius:50%;
+font-size:12px;
+}
+
+/* HERO */
+
 .hero{
-padding:60px 20px;
+padding:70px 20px;
 text-align:center;
 background:linear-gradient(135deg,#f7c600,#000);
 }
@@ -40,14 +63,20 @@ font-size:38px;
 margin-bottom:10px;
 }
 
+.hero p{
+font-size:18px;
+}
+
 .hero button{
-padding:12px 25px;
+padding:14px 28px;
 border:none;
 border-radius:12px;
+margin-top:20px;
 font-weight:bold;
-margin-top:15px;
 cursor:pointer;
 }
+
+/* SEARCH */
 
 .search-box{
 padding:20px;
@@ -59,12 +88,17 @@ padding:15px;
 border:none;
 border-radius:14px;
 font-size:16px;
+box-sizing:border-box;
 }
+
+/* TITLES */
 
 .section-title{
 padding:0 20px;
 margin-top:20px;
 }
+
+/* CATEGORIES */
 
 .categories{
 display:grid;
@@ -79,6 +113,7 @@ padding:25px;
 border-radius:18px;
 text-align:center;
 transition:0.3s;
+cursor:pointer;
 }
 
 .card:hover{
@@ -90,6 +125,8 @@ font-size:30px;
 color:#f7c600;
 margin-bottom:10px;
 }
+
+/* PRODUCTS */
 
 .products{
 display:flex;
@@ -114,14 +151,16 @@ border-radius:12px;
 
 .product-card button{
 width:100%;
-padding:10px;
+padding:12px;
+margin-top:10px;
 border:none;
-border-radius:10px;
+border-radius:12px;
 background:#f7c600;
 font-weight:bold;
-margin-top:10px;
 cursor:pointer;
 }
+
+/* MEMBERSHIP */
 
 .membership{
 margin:20px;
@@ -133,14 +172,14 @@ text-align:center;
 
 .plans{
 display:flex;
-gap:15px;
 justify-content:center;
+gap:15px;
 margin-top:20px;
 }
 
 .plan{
-padding:20px;
 background:#2a2a2a;
+padding:20px;
 border-radius:15px;
 width:120px;
 }
@@ -151,6 +190,8 @@ color:black;
 font-weight:bold;
 }
 
+/* FESTIVAL */
+
 .festival{
 margin:20px;
 padding:25px;
@@ -158,6 +199,55 @@ border-radius:20px;
 text-align:center;
 background:linear-gradient(135deg,#ff9800,#ff5722);
 }
+
+/* CART */
+
+.cart-drawer{
+position:fixed;
+top:0;
+right:-100%;
+width:320px;
+height:100%;
+background:#111;
+z-index:999;
+padding:20px;
+transition:0.4s;
+overflow:auto;
+box-sizing:border-box;
+}
+
+.cart-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cart-header button{
+padding:8px 12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.cart-item{
+background:#1d1d1d;
+padding:15px;
+border-radius:12px;
+margin-top:10px;
+}
+
+.checkout-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+margin-top:20px;
+background:#f7c600;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* BOTTOM NAV */
 
 .bottom-nav{
 position:fixed;
@@ -177,6 +267,6 @@ font-size:14px;
 
 .bottom-nav i{
 font-size:20px;
-margin-bottom:4px;
+margin-bottom:5px;
 color:#f7c600;
 }
