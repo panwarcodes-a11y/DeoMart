@@ -11,8 +11,8 @@ import {
 getFirestore,
 collection,
 addDoc,
-doc,
-setDoc
+setDoc,
+doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -29,30 +29,28 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-let user = null;
-
 // LOGIN
 window.login = async ()=>{
-const result = await signInWithPopup(auth,provider);
-user = result.user;
+const res = await signInWithPopup(auth,provider);
+const user = res.user;
 
 await setDoc(doc(db,"users",user.uid),{
 name:user.displayName,
-email:user.email,
-photo:user.photoURL
+email:user.email
 });
 
-alert("Welcome " + user.displayName);
+document.getElementById("user-box").innerHTML =
+"Hello " + user.displayName;
 };
 
-// SAVE ORDER (GLOBAL)
-window.saveOrder = async (order)=>{
+// SAVE ORDER
+window.saveOrder = async (cart,total)=>{
 
-await addDoc(collection(db,"orders"),order);
-
-};
-
-// USER STATE
-onAuthStateChanged(auth,(u)=>{
-user = u;
+await addDoc(collection(db,"orders"),{
+items:cart,
+total:total,
+status:"Pending",
+time:Date.now()
 });
+
+};
