@@ -2,66 +2,40 @@ let cart = [];
 
 function addToCart(name,price){
 cart.push({name,price});
-updateCart();
+update();
 }
 
-function updateCart(){
+function update(){
 
-let items = document.getElementById("cart-items");
+let box = document.getElementById("cart-items");
 let count = document.getElementById("cart-count");
 let totalBox = document.getElementById("cart-total");
 
-items.innerHTML = "";
+box.innerHTML = "";
 
 let total = 0;
 
-cart.forEach(item=>{
-total += item.price;
-
-items.innerHTML += `
-<div class="item">
-${item.name} - ₹${item.price}
-</div>
-`;
+cart.forEach(i=>{
+total += i.price;
+box.innerHTML += `<p>${i.name} - ₹${i.price}</p>`;
 });
 
 count.innerText = cart.length;
-totalBox.innerText = "Total: ₹" + total;
+totalBox.innerText = "Total: ₹"+total;
 }
 
-function openCart(){
-document.getElementById("cart").style.right="0";
-}
-
-function closeCart(){
-document.getElementById("cart").style.right="-100%";
-}
-
-// FINAL ORDER SYSTEM
-async function placeOrder(){
-
-if(cart.length === 0){
-alert("Cart Empty");
+function placeOrder(){
+if(cart.length==0){
+alert("Cart empty");
 return;
 }
 
-let otp = Math.floor(1000 + Math.random()*9000);
-let total = cart.reduce((sum,i)=>sum+i.price,0);
+let total = cart.reduce((a,b)=>a+b.price,0);
 
-let order = {
-items:cart,
-total:total,
-otp:otp,
-status:"Pending",
-createdAt:Date.now()
-};
+window.saveOrder(cart,total);
 
-// Firebase function call
-await window.saveOrder(order);
+alert("Order placed");
 
-alert("Order Placed 🚀 OTP: " + otp);
-
-cart = [];
-updateCart();
-closeCart();
+cart=[];
+update();
 }
