@@ -4,40 +4,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DeoMart</title>
+<title>DeoMart - Fast Grocery & Food Delivery</title>
 
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 
 <body>
 
-<h2>🛒 DeoMart Store</h2>
+<!-- NAVBAR -->
+<div class="navbar">
 
-<!-- USER AREA -->
-<div id="user-box">
-<button onclick="login()">Login With Google</button>
+<div class="logo">DeoMart</div>
+
+<div class="nav-icons">
+<i class="fas fa-bell"></i>
+<i class="fas fa-shopping-cart" onclick="openCart()"></i>
 </div>
 
-<hr>
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero">
+
+<h1>Fast Grocery & Food Delivery</h1>
+<p>Order food, groceries & medicines in minutes</p>
+
+<button onclick="openCart()">Start Shopping</button>
+
+</div>
+
+<!-- LOGIN -->
+<div id="user-box">
+<button class="login-btn" onclick="login()">
+Login With Google
+</button>
+</div>
+
+<!-- SEARCH -->
+<div class="search">
+<input type="text" placeholder="Search products...">
+</div>
 
 <!-- PRODUCTS -->
-<h3>Products</h3>
+<h2 class="section-title">Popular Items</h2>
 
-<button onclick="addToCart('Burger',120)">Burger ₹120</button>
-<button onclick="addToCart('Veg',60)">Veg ₹60</button>
-<button onclick="addToCart('Medicine',90)">Medicine ₹90</button>
+<div class="products">
 
-<hr>
+<div class="card">
+<img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg">
+<h3>Burger Combo</h3>
+<p>₹120</p>
+<button onclick="addToCart('Burger Combo',120)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://images.pexels.com/photos/264636/pexels-photo-264636.jpeg">
+<h3>Vegetables</h3>
+<p>₹50</p>
+<button onclick="addToCart('Vegetables',50)">Add</button>
+</div>
+
+<div class="card">
+<img src="https://images.pexels.com/photos/208512/pexels-photo-208512.jpeg">
+<h3>Medicines</h3>
+<p>₹90</p>
+<button onclick="addToCart('Medicines',90)">Add</button>
+</div>
+
+</div>
 
 <!-- CART -->
-<h3>Cart</h3>
+<div id="cart">
+
+<h2>Your Cart</h2>
 
 <div id="cart-items"></div>
 
-<p>Items: <span id="cart-count">0</span></p>
-<p>Total: ₹<span id="cart-total">0</span></p>
+<h3>Total: ₹<span id="cart-total">0</span></h3>
 
 <button onclick="placeOrder()">Place Order</button>
+<button onclick="closeCart()">Close</button>
+
+</div>
 
 <script src="app.js"></script>
 <script type="module" src="firebase.js"></script>
