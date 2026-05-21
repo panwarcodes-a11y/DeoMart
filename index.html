@@ -14,32 +14,73 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <!-- TOP BAR -->
 <div class="navbar">
+
 <div class="logo">DeoMart</div>
 
-<div class="cart-icon" onclick="openCart()">
-<i class="fas fa-shopping-cart"></i>
+<div class="nav-icons">
+<i class="fas fa-bell"></i>
+<i class="fas fa-shopping-cart" onclick="openCart()"></i>
 <span id="cart-count">0</span>
 </div>
+
 </div>
 
-<!-- HERO -->
+<!-- HERO BANNER -->
 <div class="hero">
+
+<div class="hero-content">
+
 <h1>DeoMart Store</h1>
-<p>Fast Grocery & Food Delivery</p>
+
+<p>Fast Grocery | Food Delivery | Medicines</p>
+
+<button onclick="openCart()">Start Shopping</button>
+
 </div>
+
+</div>
+
+<!-- SEARCH BAR -->
+<div class="search-container">
+
+<i class="fas fa-search"></i>
+
+<input type="text" placeholder="Search products, food, grocery...">
+
+</div>
+
+<!-- USER -->
+<div id="user-box"></div>
 
 <!-- CATEGORIES -->
 <h2 class="title">Categories</h2>
 
 <div class="categories">
-<div class="card">Grocery</div>
-<div class="card">Food</div>
-<div class="card">Medicine</div>
-<div class="card">Services</div>
+
+<div class="card">
+<i class="fas fa-shopping-basket"></i>
+<p>Grocery</p>
+</div>
+
+<div class="card">
+<i class="fas fa-pizza-slice"></i>
+<p>Food</p>
+</div>
+
+<div class="card">
+<i class="fas fa-pills"></i>
+<p>Medicines</p>
+</div>
+
+<div class="card">
+<i class="fas fa-truck"></i>
+<p>Delivery</p>
+</div>
+
 </div>
 
 <!-- PRODUCTS -->
-<h2 class="title">Products</h2>
+<h2 class="title">Popular Products</h2>
 
 <div class="products">
 
@@ -52,9 +93,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="product">
 <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg">
-<h3>Burger</h3>
+<h3>Burger Combo</h3>
 <p>₹120</p>
-<button onclick="addToCart('Burger',120)">Add</button>
+<button onclick="addToCart('Burger Combo',120)">Add</button>
 </div>
 
 <div class="product">
@@ -68,6 +109,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <!-- CART -->
 <div id="cart">
+
 <div class="cart-box">
 
 <h2>Your Cart</h2>
@@ -76,12 +118,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <h3 id="cart-total">Total: ₹0</h3>
 
+<button onclick="placeOrder()">Checkout</button>
+
 <button onclick="closeCart()">Close</button>
 
 </div>
+
 </div>
 
 <script src="app.js"></script>
+<script type="module" src="firebase.js"></script>
 
 </body>
 </html>
