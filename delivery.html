@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>DeoMart Delivery Panel</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+}
+
+h1{
+text-align:center;
+color:#f7c600;
+padding:15px;
+}
+
+.container{
+padding:15px;
+}
+
+.card{
+background:#1d1d1d;
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+}
+
+button{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+background:#f7c600;
+cursor:pointer;
+margin-top:5px;
+}
+
+input{
+padding:8px;
+width:100%;
+margin-top:5px;
+border-radius:8px;
+border:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🚚 Delivery Panel</h1>
+
+<div class="container" id="orders">
+
+Loading orders...
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+updateDoc,
+doc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "YOUR_API_KEY",
+authDomain: "deomart-bf41e.firebaseapp.com",
+projectId: "deomart-bf41e",
+storageBucket: "deomart-bf41e.appspot.com",
+messagingSenderId: "690880758075",
+appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// LOAD ORDERS
+async function loadOrders(){
+
+const snap = await getDocs(collection(db,"orders"));
+
+let html = "";
+
+snap.forEach((d)=>{
+
+let data = d.data();
+
+if(data.status !== "Pending") return;
+
+html += `
+<div class="card">
+
+<h3>Order</h3>
+
+<p>Total: ₹${data.total}</p>
+
+<p>Status: ${data.status}</p>
+
+<input type="text" placeholder="Enter OTP" id="otp-${d.id}">
+
+<button onclick="pickup('${d.id}')">
+Pickup Order
+</button>
+
+<button onclick="deliver('${d.id}','${data.otp}','${d.id}')">
+Deliver Order
+</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("orders").innerHTML = html;
+}
+
+// PICKUP
+window.pickup = async (id)=>{
+
+await updateDoc(doc(db,"orders",id),{
+status:"Picked"
+});
+
+alert("Order Picked");
+loadOrders();
+}
+
+// DELIVER WITH OTP
+window.deliver = async (id,otp)=>{
+
+let inputOtp = document.getElementById("otp-"+id).value;
+
+if(inputOtp != otp){
+alert("Wrong OTP ❌");
+return;
+}
+
+await updateDoc(doc(db,"orders",id),{
+status:"Delivered"
+});
+
+alert("Delivered Successfully 🚀");
+loadOrders();
+}
+
+loadOrders();
+
+</script>
+
+</body>
+
+</html>
