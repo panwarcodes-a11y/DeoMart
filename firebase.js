@@ -60,11 +60,19 @@ time:Date.now()
 };
 
 // USER STATE
-onAuthStateChanged(auth,(u)=>{
-user = u;
+onAuthStateChanged(auth, (user) => {
+  if (user) {
 
-if(u){
-document.getElementById("user-box").innerHTML =
-"👤 " + u.displayName;
-}
+    document.getElementById("user-box").innerHTML = `
+      <div style="padding:10px">
+        <img src="${user.photoURL}" width="50" style="border-radius:50%">
+        <p>Welcome ${user.displayName}</p>
+      </div>
+    `;
+
+  } else {
+    document.getElementById("user-box").innerHTML = `
+      <button onclick="login()">Login With Google</button>
+    `;
+  }
 });
