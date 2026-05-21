@@ -1,4 +1,4 @@
-console.log("DeoMart Loaded");
+console.log("DeoMart Premium Loaded");
 
 let cart = [];
 
@@ -32,6 +32,7 @@ cart.forEach((item,index)=>{
 total += item.price;
 
 cartItems.innerHTML += `
+
 <div class="cart-item">
 
 <h4>${item.name}</h4>
@@ -39,6 +40,7 @@ cartItems.innerHTML += `
 <p>₹${item.price}</p>
 
 </div>
+
 `;
 
 });
@@ -64,7 +66,8 @@ document.getElementById("cartDrawer")
 
 }
 
-document.querySelector(".fa-shopping-cart")
+document
+.querySelector(".fa-shopping-cart")
 .addEventListener("click",openCart);
 
 const cards =
