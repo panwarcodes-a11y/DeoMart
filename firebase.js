@@ -29,53 +29,30 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-let currentUser = null;
+let user = null;
 
----
+// LOGIN
+window.login = async ()=>{
+const result = await signInWithPopup(auth,provider);
+user = result.user;
 
-# 🔐 LOGIN
-
-window.login = async () => {
-const result = await signInWithPopup(auth, provider);
-currentUser = result.user;
-
-await setDoc(doc(db, "users", currentUser.uid), {
-name: currentUser.displayName,
-email: currentUser.email,
-photo: currentUser.photoURL
+await setDoc(doc(db,"users",user.uid),{
+name:user.displayName,
+email:user.email,
+photo:user.photoURL
 });
 
-alert("Welcome " + currentUser.displayName);
+alert("Welcome " + user.displayName);
 };
 
----
+// SAVE ORDER (GLOBAL)
+window.saveOrder = async (order)=>{
 
-# 📦 ORDER SAVE SYSTEM
+await addDoc(collection(db,"orders"),order);
 
-window.saveOrder = async (cart, total) => {
-
-if(!currentUser){
-alert("Please login first");
-return;
-}
-
-const orderData = {
-userId: currentUser.uid,
-items: cart,
-total: total,
-status: "Pending",
-time: Date.now()
 };
 
-await addDoc(collection(db, "orders"), orderData);
-
-alert("Order Placed Successfully 🚀");
-};
-
----
-
-# 👤 USER CHECK
-
-onAuthStateChanged(auth, (user) => {
-currentUser = user;
+// USER STATE
+onAuthStateChanged(auth,(u)=>{
+user = u;
 });
