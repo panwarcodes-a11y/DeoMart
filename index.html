@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,31 +13,40 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <body>
 
-<!-- TOP BAR -->
+<!-- NAVBAR -->
 <div class="navbar">
 
 <div class="logo">DeoMart</div>
 
 <div class="nav-icons">
+
 <i class="fas fa-bell"></i>
+
 <i class="fas fa-shopping-cart" onclick="openCart()"></i>
+
 <span id="cart-count">0</span>
-</div>
 
 </div>
 
-<!-- HERO BANNER -->
+</div>
+
+<!-- USER LOGIN AREA -->
+<div id="user-box"></div>
+
+<button class="login-btn" onclick="login()">
+Login With Google
+</button>
+
+<!-- HERO -->
 <div class="hero">
-
-<div class="hero-content">
 
 <h1>DeoMart Store</h1>
 
-<p>Fast Grocery | Food Delivery | Medicines</p>
+<p>Fast Grocery | Food | Medicines | Delivery</p>
 
-<button onclick="openCart()">Start Shopping</button>
-
-</div>
+<button onclick="openCart()">
+Start Shopping
+</button>
 
 </div>
 
@@ -45,12 +55,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <i class="fas fa-search"></i>
 
-<input type="text" placeholder="Search products, food, grocery...">
+<input type="text" placeholder="Search products...">
 
 </div>
-
-<!-- USER -->
-<div id="user-box"></div>
 
 <!-- CATEGORIES -->
 <h2 class="title">Categories</h2>
@@ -69,7 +76,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="card">
 <i class="fas fa-pills"></i>
-<p>Medicines</p>
+<p>Medicine</p>
 </div>
 
 <div class="card">
@@ -95,7 +102,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg">
 <h3>Burger Combo</h3>
 <p>₹120</p>
-<button onclick="addToCart('Burger Combo',120)">Add</button>
+<button onclick="addToCart('Burger',120)">Add</button>
 </div>
 
 <div class="product">
@@ -118,16 +125,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <h3 id="cart-total">Total: ₹0</h3>
 
-<button onclick="placeOrder()">Checkout</button>
+<button onclick="placeOrder()">
+Checkout Now
+</button>
 
-<button onclick="closeCart()">Close</button>
+<button onclick="closeCart()">
+Close
+</button>
 
 </div>
 
 </div>
 
+<!-- SCRIPTS -->
 <script src="app.js"></script>
 <script type="module" src="firebase.js"></script>
 
 </body>
+
 </html>
