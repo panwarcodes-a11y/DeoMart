@@ -4,30 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeoMart</title>
-
 <link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 
 <body>
 
 <!-- NAVBAR -->
 <div class="navbar">
-
 <div class="logo">DeoMart</div>
 
 <div class="nav-icons">
-
 <i class="fas fa-search"></i>
-<i class="fas fa-bell"></i>
-
-<div class="cart-icon">
-<i class="fas fa-shopping-cart"></i>
+<i class="fas fa-shopping-cart" onclick="openCart()"></i>
 <span id="cart-count">0</span>
-</div>
-
 </div>
 </div>
 
@@ -36,26 +26,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <!-- HERO -->
 <div class="hero">
-<h1>DeoMart Deoband</h1>
-<p>Grocery | Food | Medicines | Services</p>
-<button onclick="openCart()">Start Shopping</button>
-</div>
-
-<!-- SEARCH -->
-<div class="search-box">
-<input type="text" placeholder="Search anything...">
-</div>
-
-<!-- CATEGORIES -->
-<h2 class="title">Categories</h2>
-
-<div class="categories">
-
-<div class="card">Grocery</div>
-<div class="card">Food</div>
-<div class="card">Medicine</div>
-<div class="card">Services</div>
-
+<h1>DeoMart Next Level</h1>
+<p>Fast Grocery | Food | Medicines</p>
 </div>
 
 <!-- PRODUCTS -->
@@ -72,7 +44,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="product">
 <img src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg">
-<h3>Burger Combo</h3>
+<h3>Burger</h3>
 <p>₹120</p>
 <button onclick="addToCart('Burger',120)">Add</button>
 </div>
@@ -95,12 +67,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <h3 id="cart-total">Total: ₹0</h3>
 
+<button onclick="placeOrder()">Checkout</button>
 <button onclick="closeCart()">Close</button>
 
 </div>
 </div>
 
-<!-- JS -->
 <script src="app.js"></script>
 <script type="module" src="firebase.js"></script>
 
