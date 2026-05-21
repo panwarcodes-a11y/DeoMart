@@ -34,29 +34,3 @@ document.getElementById("cart").style.right="0";
 function closeCart(){
 document.getElementById("cart").style.right="-100%";
 }
-
-// ORDER SYSTEM
-function placeOrder(){
-
-if(cart.length === 0){
-alert("Cart Empty");
-return;
-}
-
-let otp = Math.floor(1000 + Math.random()*9000);
-
-let order = {
-items:cart,
-otp:otp,
-status:"Pending",
-time:Date.now()
-};
-
-alert("Order Placed! OTP: " + otp);
-
-console.log(order);
-
-cart = [];
-updateCart();
-closeCart();
-}
