@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>DeoMart Admin Panel</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#111;
+color:white;
+}
+
+h1{
+text-align:center;
+color:#f7c600;
+padding:20px;
+}
+
+.container{
+padding:20px;
+}
+
+.card{
+background:#1d1d1d;
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+}
+
+button{
+padding:8px 12px;
+border:none;
+border-radius:8px;
+background:#f7c600;
+cursor:pointer;
+margin-top:5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>DeoMart Admin Panel</h1>
+
+<div class="container" id="orders">
+
+Loading orders...
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+updateDoc,
+doc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "YOUR_API_KEY",
+authDomain: "deomart-bf41e.firebaseapp.com",
+projectId: "deomart-bf41e",
+storageBucket: "deomart-bf41e.appspot.com",
+messagingSenderId: "690880758075",
+appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loadOrders(){
+
+const querySnapshot = await getDocs(collection(db, "orders"));
+
+let html = "";
+
+querySnapshot.forEach((docSnap)=>{
+
+let data = docSnap.data();
+
+html += `
+<div class="card">
+
+<h3>Order</h3>
+
+<p><b>Total:</b> ₹${data.total}</p>
+
+<p><b>Status:</b> ${data.status}</p>
+
+<button onclick="updateStatus('${docSnap.id}','Packed')">
+Mark Packed
+</button>
+
+<button onclick="updateStatus('${docSnap.id}','Delivered')">
+Mark Delivered
+</button>
+
+</div>
+`;
+});
+
+document.getElementById("orders").innerHTML = html;
+
+}
+
+window.updateStatus = async (id,status)=>{
+
+await updateDoc(doc(db,"orders",id),{
+status:status
+});
+
+alert("Updated: " + status);
+loadOrders();
+}
+
+loadOrders();
+
+</script>
+
+</body>
+
+</html>
