@@ -39,11 +39,9 @@ return;
 
 let total = cart.reduce((a,b)=>a+b.price,0);
 
-window.saveOrder(cart,total);
+window.login = async () => {
+  const result = await signInWithPopup(auth, provider);
+  const user = result.user;
 
-alert("Order Placed 🚀");
-
-cart=[];
-updateCart();
-closeCart();
-}
+  console.log("LOGIN SUCCESS:", user);
+};
