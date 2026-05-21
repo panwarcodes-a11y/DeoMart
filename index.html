@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DeoMart</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DeoMart</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
 </head>
 
 <body>
@@ -14,23 +19,42 @@
 <!-- NAVBAR -->
 
 <nav class="navbar">
-  <div class="logo">DeoMart</div>
 
-  <div class="nav-icons">
-    <i class="fas fa-search"></i>
-    <i class="fas fa-bell"></i>
-  </div>
+<div class="logo">
+DeoMart
+</div>
+
+<div class="nav-icons">
+
+<i class="fas fa-search"></i>
+
+<i class="fas fa-bell"></i>
+
+<div class="cart-icon">
+
+<i class="fas fa-shopping-cart"></i>
+
+<span id="cart-count">0</span>
+
+</div>
+
+</div>
+
 </nav>
 
 <!-- HERO -->
 
 <section class="hero">
 
-  <h1>Fast Delivery In Deoband</h1>
+<h1>Fast Delivery In Deoband</h1>
 
-  <p>Groceries, Food, Medicines & Services</p>
+<p>
+Groceries, Food, Medicines & Services
+</p>
 
-  <button>Start Shopping</button>
+<button>
+Start Shopping
+</button>
 
 </section>
 
@@ -38,61 +62,102 @@
 
 <section class="search-box">
 
-  <input type="text" placeholder="Search products, shops or services...">
+<input
+type="text"
+placeholder="Search products, shops or services..."
+>
 
 </section>
 
 <!-- CATEGORIES -->
 
 <section class="section-title">
-  <h2>Categories</h2>
+
+<h2>Categories</h2>
+
 </section>
 
 <section class="categories">
 
-  <div class="card">
-    <i class="fas fa-shopping-basket"></i>
-    <h3>Grocery</h3>
-  </div>
+<div class="card">
+<i class="fas fa-shopping-basket"></i>
+<h3>Grocery</h3>
+</div>
 
-  <div class="card">
-    <i class="fas fa-burger"></i>
-    <h3>Food</h3>
-  </div>
+<div class="card">
+<i class="fas fa-burger"></i>
+<h3>Food</h3>
+</div>
 
-  <div class="card">
-    <i class="fas fa-prescription-bottle"></i>
-    <h3>Medicines</h3>
-  </div>
+<div class="card">
+<i class="fas fa-prescription-bottle"></i>
+<h3>Medicines</h3>
+</div>
 
-  <div class="card">
-    <i class="fas fa-tools"></i>
-    <h3>Services</h3>
-  </div>
+<div class="card">
+<i class="fas fa-tools"></i>
+<h3>Services</h3>
+</div>
 
 </section>
 
 <!-- TRENDING -->
 
 <section class="section-title">
-  <h2>Trending In Deoband</h2>
+
+<h2>Trending In Deoband</h2>
+
 </section>
 
 <section class="products">
 
-  <div class="product-card">
-    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600" />
-    <h3>Fresh Vegetables</h3>
-    <p>Starting ₹20</p>
-    <button>Add</button>
-  </div>
+<div class="product-card">
 
-  <div class="product-card">
-    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600" />
-    <h3>Fast Food</h3>
-    <p>Starting ₹99</p>
-    <button>Add</button>
-  </div>
+<img
+src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600"
+>
+
+<h3>Fresh Vegetables</h3>
+
+<p>₹40</p>
+
+<button onclick="addToCart('Fresh Vegetables',40)">
+Add To Cart
+</button>
+
+</div>
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600"
+>
+
+<h3>Burger Combo</h3>
+
+<p>₹120</p>
+
+<button onclick="addToCart('Burger Combo',120)">
+Add To Cart
+</button>
+
+</div>
+
+<div class="product-card">
+
+<img
+src="https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=600"
+>
+
+<h3>Medicines</h3>
+
+<p>₹80</p>
+
+<button onclick="addToCart('Medicines',80)">
+Add To Cart
+</button>
+
+</div>
 
 </section>
 
@@ -100,63 +165,102 @@
 
 <section class="membership">
 
-  <h2>DeoMart Plus</h2>
+<h2>DeoMart Plus</h2>
 
-  <p>Get Free Delivery & Premium Rewards</p>
+<p>
+Get Free Delivery & Premium Rewards
+</p>
 
-  <div class="plans">
+<div class="plans">
 
-    <div class="plan">
-      <h3>₹199</h3>
-      <p>Monthly Plan</p>
-    </div>
+<div class="plan">
 
-    <div class="plan premium">
-      <h3>₹299</h3>
-      <p>Premium Plan</p>
-    </div>
+<h3>₹199</h3>
 
-  </div>
+<p>Monthly Plan</p>
+
+</div>
+
+<div class="plan premium">
+
+<h3>₹299</h3>
+
+<p>Premium Plan</p>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- FESTIVAL BANNER -->
+<!-- FESTIVAL -->
 
 <section class="festival">
 
-  <h2>✨ Eid Mubarak From DeoMart ✨</h2>
+<h2>
+✨ Eid Mubarak From DeoMart ✨
+</h2>
 
-  <p>Get bonus points on every order today!</p>
+<p>
+Get bonus points on every order today!
+</p>
 
 </section>
 
-<!-- BOTTOM NAVBAR -->
+<!-- CART DRAWER -->
+
+<div class="cart-drawer" id="cartDrawer">
+
+<div class="cart-header">
+
+<h2>Your Cart</h2>
+
+<button onclick="closeCart()">
+X
+</button>
+
+</div>
+
+<div id="cart-items"></div>
+
+<h3 id="cart-total">
+Total: ₹0
+</h3>
+
+<button class="checkout-btn">
+Checkout
+</button>
+
+</div>
+
+<!-- BOTTOM NAV -->
 
 <div class="bottom-nav">
 
-  <div>
-    <i class="fas fa-home"></i>
-    <p>Home</p>
-  </div>
+<div>
+<i class="fas fa-home"></i>
+<p>Home</p>
+</div>
 
-  <div>
-    <i class="fas fa-th-large"></i>
-    <p>Categories</p>
-  </div>
+<div>
+<i class="fas fa-th-large"></i>
+<p>Categories</p>
+</div>
 
-  <div>
-    <i class="fas fa-shopping-cart"></i>
-    <p>Cart</p>
-  </div>
+<div>
+<i class="fas fa-shopping-cart"></i>
+<p>Cart</p>
+</div>
 
-  <div>
-    <i class="fas fa-user"></i>
-    <p>Profile</p>
-  </div>
+<div>
+<i class="fas fa-user"></i>
+<p>Profile</p>
+</div>
 
 </div>
 
 <script src="app.js"></script>
 
 </body>
+
 </html>
