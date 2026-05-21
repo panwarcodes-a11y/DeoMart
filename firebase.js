@@ -4,16 +4,15 @@ import {
 getAuth,
 GoogleAuthProvider,
 signInWithPopup,
-signOut,
 onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
 getFirestore,
-doc,
-setDoc,
 collection,
-addDoc
+addDoc,
+doc,
+setDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -30,38 +29,53 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-// LOGIN
-window.login = async ()=>{
-const result = await signInWithPopup(auth,provider);
-const user = result.user;
+let currentUser = null;
 
-await setDoc(doc(db,"users",user.uid),{
-name:user.displayName,
-email:user.email
+---
+
+# 🔐 LOGIN
+
+window.login = async () => {
+const result = await signInWithPopup(auth, provider);
+currentUser = result.user;
+
+await setDoc(doc(db, "users", currentUser.uid), {
+name: currentUser.displayName,
+email: currentUser.email,
+photo: currentUser.photoURL
 });
 
-alert("Welcome " + user.displayName);
+alert("Welcome " + currentUser.displayName);
+};
+
+---
+
+# 📦 ORDER SAVE SYSTEM
+
+window.saveOrder = async (cart, total) => {
+
+if(!currentUser){
+alert("Please login first");
+return;
 }
 
-// SAVE ORDER
-window.saveOrder = async (order)=>{
-await addDoc(collection(db,"orders"),order);
-}
+const orderData = {
+userId: currentUser.uid,
+items: cart,
+total: total,
+status: "Pending",
+time: Date.now()
+};
 
-// USER CHECK
-onAuthStateChanged(auth,(user)=>{
+await addDoc(collection(db, "orders"), orderData);
 
-let box = document.getElementById("user-box");
+alert("Order Placed Successfully 🚀");
+};
 
-if(user){
-box.innerHTML = `
-<p>Welcome ${user.displayName}</p>
-<button onclick="signOut(auth)">Logout</button>
-`;
-}else{
-box.innerHTML = `
-<button onclick="login()">Login With Google</button>
-`;
-}
+---
 
+# 👤 USER CHECK
+
+onAuthStateChanged(auth, (user) => {
+currentUser = user;
 });
