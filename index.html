@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DeoMart</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h2>DeoMart</h2>
+<h2>🛒 DeoMart Store</h2>
 
-<div id="user-box"></div>
-
-<button onclick="login()">Login</button>
+<!-- USER AREA -->
+<div id="user-box">
+<button onclick="login()">Login With Google</button>
+</div>
 
 <hr>
 
+<!-- PRODUCTS -->
 <h3>Products</h3>
 
 <button onclick="addToCart('Burger',120)">Burger ₹120</button>
-<button onclick="addToCart('Veg',50)">Veg ₹50</button>
+<button onclick="addToCart('Veg',60)">Veg ₹60</button>
+<button onclick="addToCart('Medicine',90)">Medicine ₹90</button>
 
 <hr>
 
-<h3>Cart (<span id="cart-count">0</span>)</h3>
+<!-- CART -->
+<h3>Cart</h3>
 
 <div id="cart-items"></div>
 
-<h3 id="cart-total">Total: 0</h3>
+<p>Items: <span id="cart-count">0</span></p>
+<p>Total: ₹<span id="cart-total">0</span></p>
 
 <button onclick="placeOrder()">Place Order</button>
 
