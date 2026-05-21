@@ -34,3 +34,10 @@ document.getElementById("cart").style.right="0";
 function closeCart(){
 document.getElementById("cart").style.right="-100%";
 }
+
+function placeOrder(){
+alert("Order Placed Successfully!");
+cart = [];
+updateCart();
+closeCart();
+}
