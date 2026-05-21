@@ -16,12 +16,12 @@ doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-apiKey: "YOUR_API_KEY",
+apiKey: "AIzaSyB4pbyr4_zy7A7r7aZDNhfv7KpPTe0zruU",
 authDomain: "deomart-bf41e.firebaseapp.com",
 projectId: "deomart-bf41e",
 storageBucket: "deomart-bf41e.appspot.com",
 messagingSenderId: "690880758075",
-appId: "YOUR_APP_ID"
+appId: "1:690880758075:web:2103a1d13781760d5a371e",
 };
 
 const app = initializeApp(firebaseConfig);
